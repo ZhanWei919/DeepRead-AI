@@ -1,0 +1,87 @@
+{
+  "name": "deepread-ai-desktop",
+  "version": "0.1.0",
+  "description": "DeepRead AI Desktop Application",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "package:backend": "cd backend && pyinstaller --name deepread_ai_server --onefile main.py --noconsole --hidden-import=uvicorn.logging --hidden-import=uvicorn.loops --hidden-import=uvicorn.loops.auto --hidden-import=uvicorn.protocols --hidden-import=uvicorn.protocols.http --hidden-import=uvicorn.protocols.http.auto --hidden-import=uvicorn.protocols.websockets --hidden-import=uvicorn.protocols.websockets.auto --hidden-import=uvicorn.lifespan --hidden-import=uvicorn.lifespan.on --hidden-import=uvicorn.lifespan.off --hidden-import=pydantic.typing --hidden-import=pydantic._internal --hidden-import=pydantic_core --hidden-import=deepseek_client && cd .. && mkdirp ./electron_build_resources/backend_exe && cpy backend/dist/deepread_ai_server.exe ./electron_build_resources/backend_exe/ --overwrite",
+    "build:vue": "cd frontend/deepread-ui && npm run build",
+    "dist": "npm run build:vue && npm run package:backend && npx electron-builder",
+    "dist:win": "npm run build:vue && npm run package:backend && npx electron-builder --win",
+    "dist:mac": "npm run build:vue && npm run package:backend && npx electron-builder --mac",
+    "dist:linux": "npm run build:vue && npm run package:backend && npx electron-builder --linux"
+  },
+  "keywords": [],
+  "author": "Zhan Wei",
+  "license": "MIT",
+  "devDependencies": {
+    "cpy-cli": "^5.0.0",
+    "electron": "^36.2.1",
+    "electron-builder": "^26.0.12",
+    "mkdirp": "^3.0.1"
+  },
+  "dependencies": {
+    "fix-path": "^3.0.0"
+  },
+  "build": {
+    "appId": "com.zw.deepreadai",
+    "productName": "DeepRead AI",
+    "copyright": "Copyright © 2025 Zhan Wei",
+    "directories": {
+      "output": "electron_releases",
+      "buildResources": "build_assets"
+    },
+    "files": [
+      "electron/**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "frontend/deepread-ui/dist",
+        "to": "frontend_dist",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "electron_build_resources/backend_exe/deepread_ai_server.exe",
+        "to": "backend_exe/deepread_ai_server.exe"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
