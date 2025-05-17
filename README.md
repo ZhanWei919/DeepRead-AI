@@ -146,15 +146,15 @@
 * 提交代码 (Submit pull requests)
 * 改进文档 (Improve documentation)
 
-请在提交 Pull Request 前先阅读我们的贡献指南 (如果项目壮大后可以创建一个 `CONTRIBUTING.md` 文件)。
+请在提交 Pull Request 前先阅读我们的贡献指南 。
 
 ## 📄 许可证 (License)
 
-本项目采用 [MIT 许可证](LICENSE.md) 开源。
+本项目采用 [MIT] 开源。
 
 ---
 
-**作者**: <你的名字或昵称> ([你的GitHub主页链接](https://github.com/<你的GitHub用户名>))
+**作者**: <Zhan Wei> (https://github.com/ZhanWei919)
 
 **致谢**:
 
