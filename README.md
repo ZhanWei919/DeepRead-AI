@@ -49,10 +49,7 @@
 
 1.  **克隆仓库 (或下载源代码):**
 
-	```bash
-	git clone [https://github.com/](https://github.com/)<你的GitHub用户名>/<你的仓库名>.git
-	cd <你的仓库名>
-	```
+
 
 2.  **安装后端依赖:**
 
