@@ -31,7 +31,7 @@
 
 ### 1. 下载预编译版本 (推荐给普通用户)
 
-你可以从项目的 [Releases 页面](https://github.com/<你的GitHub用户名>/<你的仓库名>/releases) 下载最新的预编译安装包 (例如 `.exe` for Windows)。
+你可以从项目的 release 下载最新的预编译安装包 (例如 `.exe` for Windows)。
 
 目前只提供Windows版，你可以自行打包Mac版。
 
